@@ -1,0 +1,78 @@
+body {  
+  margin: 0;
+  padding: 0;
+  background-color: rgb(16, 13, 13);
+  font-family: Tahoma;
+}
+.box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.form-box {
+  width: 100%;
+  max-width: 450px;
+}
+.form-box h2 {
+  color: #fff;
+  text-align: center;
+  font-size: 35px;
+  margin-bottom: 15px;
+}
+.form-box :where(input[type="email"],input[type="password"]) {
+  background: transparent;
+  border: 1px solid gray;
+  width: 100%;
+  border-radius: 50px;
+  padding: 15px;
+  outline: none;
+  color: #fff;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+.form-box button[type="submit"] {
+  display: block;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 15px 40px;
+  color: black;
+  outline: none;
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 50px;
+  cursor: pointer;
+}
+.input-icon {
+  position: relative;
+  margin-bottom: 20px;
+}
+.input-icon p {
+  color: gray;
+  margin: 0;
+  padding-left: 10px;
+}
+.icon-check {
+  position: absolute;
+  left: 98%;
+  top: 15px;
+}
+
+input:invalid:not(:placeholder-shown) {
+  border-color: red;
+}
+input:invalid:not(:placeholder-shown) + p,
+input:invalid:not(:placeholder-shown) ~ .icon-check {
+ color: red;
+}
+input:valid {
+  border-color: green;
+}
+input:valid ~ .icon-check {
+ color: green;
+}
+form:invalid button[type="submit"] {
+  opacity: .8;
+  pointer-events: none;
+}
