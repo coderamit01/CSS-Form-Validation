@@ -1,3 +1,6 @@
+* {
+  box-sizing: border-box;
+}
 body {  
   margin: 0;
   padding: 0;
@@ -13,7 +16,42 @@ body {
 .form-box {
   width: 100%;
   max-width: 450px;
+  background-color: rgb(12, 12, 31);
+  padding: 20px;
+  border-radius: 10px;
+  position: relative;
 }
+@property --angle {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0deg;
+}
+.form-box::after,
+.form-box::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  height: 100%;
+  width: 100%;
+  --angle: 0deg;
+  background-image: conic-gradient(from var(--angle), rgba(214, 190, 96, 0.735), rgba(43, 43, 190, 0.882), rgba(149, 40, 40, 0.837));
+  animation: BorderAnimate 4s linear infinite;
+  z-index: -1;
+  padding: 5px;
+  border-radius: 10px;
+}
+.form-box::after {
+  filter: blur(60px);
+}
+@keyframes BorderAnimate {
+  to {
+    --angle: 360deg;
+  }
+}
+
+
 .form-box h2 {
   color: #fff;
   text-align: center;
@@ -38,6 +76,7 @@ body {
   padding: 15px 40px;
   color: black;
   outline: none;
+  width: 100%;
   border: none;
   font-size: 16px;
   font-weight: 500;
@@ -55,8 +94,8 @@ body {
 }
 .icon-check {
   position: absolute;
-  left: 98%;
-  top: 15px;
+  right: 18px;
+  top: 17px;
 }
 
 input:invalid:not(:placeholder-shown) {
